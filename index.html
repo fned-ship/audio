@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!------------------------------------------------------------------------------------>
+            <base href="https://fned.000webhostapp.com/" />   <!-- we use it as a folder instead of this folder where this file sitiation (ep_15)  -->
+            <title>audio player</title>
+            
+            <!-- icon -->
+            <link rel="icon" href="logo.jpg" /> <!-- required  -->
+            <link rel="shortcut" href="logo.jpg" /> <!-- for google when someone wants to search -->
+            <link rel="apple-touch-icon" href="logo.jpg" /> <!-- for apple -->
+            <!---->
+    
+            <!-- meta / google -->
+            <!-- <base href="https://fned.000webhostapp.com/" />  -->  <!-- we use it as a folder instead of this folder where this file sitiation (ep_15)  -->
+            <meta charset="UTF-8"> <!-- da3m ba9iyet a lou8at wl roumouz-->
+            <meta name="viewport" content="width=device-width,initial-scale=1.0" > <!-- for all the phones -->
+            <meta name="description" content="here you can listen to music"/>
+            <meta name="keywords" content="music"/>
+            <meta name="author" content="youssef fned"/>
+            <!-- see input_file.html or ep43 -->
+            <!---->
+    
+            <!-- website in facebook when you wanna share it in fcb -->
+            <meta property="og:title" content="audio" />
+            <meta property="og:description" content="here you can listen to music" />
+            <meta property="og:image" content="logo.jpg" />
+            <meta property="og:image:width" content="1200" />  <!-- you should make the width=height*2 -->
+            <meta property="og:image:height" content="630"/> 
+            <meta property="og:type" content="website" /> <!-- content="article" -->
+            <!--   <meta property="og:url" content="" />  --> <!--it's not required or necessery -->
+            <!-- bloger: ep45 -->
+            <!---->
+    
+            <!-- twitter -->
+            <meta name="twitter:card" content="summary_large_image"> <!-- required -->
+            <meta name="twitter:title" content="audio">
+            <meta name="twitter:description" content="here you can listen to music">
+            <meta name="twitter:image" content="logo.jpg">
+    
+            <meta name="twitter:site" content="@"> <!-- name of site account on twitter -->
+            <meta name="twitter:creator" content="@">  <!-- name of creator account on twitter -->
+            <!---->
+    
+    <!------------------------------------------------------------------------------------>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        article{
+    text-align: center;
+}
+#player_buttons{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+#player_buttons img{
+    margin: 0 15px;
+    float: left;
+    width: 45px;
+    height: 45px;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #e6e7e8;
+    margin: 0px;
+  }
+input[type=range]::-webkit-slider-thumb {  
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background: #f65b79;
+    -webkit-appearance: none;
+}
+#colors{
+    margin-top:15px;
+}
+#colors button{
+    margin-top: 12px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 0px solid white;
+}
+#color-1{
+    background:#212020;
+}
+#color-2{
+    background:#ff5353;
+}
+#color-3{
+    background:#009688;
+}
+#color-4{
+    background:#222a4c;
+}
+
+footer{
+    height: 90px;
+    background: white;
+}
+/***********************************************************
+#input_file{
+    display:none;
+}
+#add{
+    margin-top: 30px;
+    width: 100%;
+    
+}
+#add div{
+    width:70%;
+    height:70px;
+    display:flex;
+    justify-content: center;
+    background-color: burlywood;
+    margin-bottom: 20px;
+    border-radius: 40px;
+    margin-left: 50px;
+}
+#add div img{
+    width:50px;
+    /*margin-right: 30px;/*
+}
+#add h1 {
+    margin-right: 20px;
+    margin-top: 19.91px;
+}
+#add span{
+height: 100%;
+width: 50px;
+}
+#song{
+    margin-top: 10px;
+    margin-right: 1px;
+}
+#photo{
+    margin-top: 10px;
+    margin-right: 1px;
+}*/
+/**********************************************************/
+#audio_player{
+    position: absolute;
+    width: 350px;
+    height: 1000px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color:#040243;
+}
+main{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    margin-top: 100px;
+}
+/***********************************************************/
+header{
+    width: 100%;
+    height: 310px;
+    background: wheat;
+    background-size: 100%;
+    text-align: center;
+    color: white;
+}
+nav img{
+    width: 140px;
+    border-radius: 50%;
+}
+nav{
+  transform: translateY(50px);
+  height:90px;
+}
+nav h2{
+font-size: 30px;
+}
+nav p{
+  font-size: 20px;
+}
+    </style>
+</head>
+<body>
+    <div id="audio_player">
+        <main>
+            <header id="header">
+                  
+                <nav>
+                    <img src="logo.jpg" alt="">
+                    <h2 id="siteName">Name Site</h2>
+                    <p id="radio-title">اسم اغنية</p>
+                </nav>
+            </header>
+
+ 
+            <article id="player_buttons">
+                <img src="back.png" alt="" id="back">
+                <img src="play.png" alt="" id="play">
+                <img src="next.png" alt="" id="next">
+            </article>
+
+            <article>
+                <audio src="" id="audio_file"></audio>
+                <h2>الصوت</h2>
+                <input id="volume" type="range" value="50" min="0" max="100" id="range">  
+                <h2>السرعة</h2>
+                <input id="speed" type="range" value="100" min="0" max="200" id="range">         
+            </article>
+
+            
+            <article id="colors">
+                    <button id="color-1"></button>
+                    <button id="color-2"></button>
+                    <button id="color-3"></button>
+                    <button id="color-4"></button>
+           </article><!--
+           <article id="add">
+            <div>
+               <h1>add a song</h1>
+               <span><img src="../add.png" id="song"/></span>
+            </div>
+            <div>
+               <h1>add a photo</h1>
+              <span> <img src="../add.png" id="photo" /></span>
+            </div>
+            <input type="file" id="input_file" />
+           </article>-->
+           <footer style="width:100%; margin-top:50px; " >
+<a id="ahref" style="text-decoration:none;" >
+<h2 style=" color:crimson; text-align:center; width:100%; line-height: 60px; background-color: burlywood; height:60px; border-radius:30px; " >click here to watch it in youtube</h2>
+<img src="" width="100%" height="180" id="img1" />
+</a>
+           </footer>
+        </main>
+    </div>
+    <script >
+        setInterval(()=>{
+    var width = screen.width;
+    var height = screen.height;
+
+ if(width<=768){
+ 
+     document.getElementById("audio_player").style.width = width+"px";
+     document.getElementById("audio_player").style.height = height+"px";
+
+    }});
+    </script>
+    <script >
+        class Colors{
+    constructor(){
+        if(localStorage.getItem("SaveColor")==null){
+    
+            document.body.style.background = "linear-gradient(to right, #00d2ff, #928dab)";
+       
+        }
+
+    this.color1 = document.getElementById("color-1");
+    this.color1.addEventListener("click",()=>{
+        this.selectColor("color-1");
+    });
+
+    this.color2 = document.getElementById("color-2");
+    this.color2.addEventListener("click",()=>{
+        this.selectColor("color-2");
+    });
+
+    this.color3 = document.getElementById("color-3");
+    this.color3.addEventListener("click",()=>{
+        this.selectColor("color-3");
+    });
+
+    this.color4 = document.getElementById("color-4");
+    this.color4.addEventListener("click",()=>{
+        this.selectColor("color-4");
+    });
+
+    this.selectColor(localStorage.getItem("SaveColor"));
+    }
+
+    selectColor(color){
+       
+        this.header = document.getElementById("header");
+        if(color == "color-1"){
+            this.header.style.background ="rgb(27, 27, 27)";
+            document.body.style.background = "rgb(27, 27, 27)";
+        }
+        else if(color == "color-2"){
+            this.header.style.background ="#ff5353";
+            document.body.style.background ="#ff5353";
+        }
+
+        else if(color == "color-3"){
+            this.header.style.background ="#009688";
+            document.body.style.background ="#009688";
+        }
+
+        else if(color == "color-4"){
+            this.header.style.background = "#222a4c";
+            document.body.style.background ="#222a4c";
+        }
+        localStorage.setItem("SaveColor",color);
+    }
+
+}
+onload = new Colors();
+    </script>
+    <script >
+        class Player{
+    constructor(){
+        this.audio_file = document.getElementById("audio_file");
+        this.isPlayed;// =false
+
+        this.play = document.getElementById("play");
+        this.play.addEventListener("click",()=>{this.play_pause();});
+
+        this.audios =[];
+        this.audios[0] = "Eminem.mp3";
+        this.audios[1] = "Alan Walker.mp3";
+        this.audios[2] = "Indila.mp3";
+    
+        this.names = [];
+        this.names[0] = "Eminem";
+        this.names[1] = "Alan Walker";
+        this.names[2] = "Indila";
+
+        this.images=[];
+        this.images[1]="alanwalker.jfif";
+        this.images[2]="indila.jfif";
+        this.images[0]="eminemFTakon.jfif";
+
+        this.links1=[];
+        this.links1[1]="https://youtu.be/dhYOPzcsbGM";
+        this.links1[2]="https://www.youtube.com/watch?v=DF3XjEhJ40Y";
+        this.links1[0]="https://www.youtube.com/watch?v=bKDdT_nyP54";
+        
+        this.numberAudio =0;
+
+     
+
+        this.next = document.getElementById("next");
+        this.next.addEventListener("click",()=>{
+            this.next_audio();
+        });
+           
+
+        this.back = document.getElementById("back");
+        this.back.addEventListener("click",()=>{
+          this.back_audio();  
+         
+        });
+
+       //this.setSource();
+       document.getElementById("radio-title").innerHTML = this.names[this.numberAudio];
+       document.getElementById("audio_file").src = this.audios[this.numberAudio];
+       document.getElementById("img1").src=this.images[this.numberAudio];
+       document.getElementById("ahref").href=this.links1[this.numberAudio];
+
+
+
+    }
+    play_pause(){
+        if(this.isPlayed==false){
+            this.play.src = "pause.png";
+            this.audio_file.play();
+            this.isPlayed=true;
+        }
+        else{
+            this.play.src = "play.png";
+            this.audio_file.pause();
+            this.isPlayed=false;
+        }
+    }
+
+    next_audio(){
+         if(this.numberAudio<this.audios.length-1){
+                ++this.numberAudio;
+                this.isPlayed = false; 
+                }
+         else   {
+                this.numberAudio = 0;
+                this.isPlayed = false; 
+
+                }
+                this.setSource();
+    }
+    back_audio(){
+        if(this.numberAudio>0){
+            --this.numberAudio;
+            this.isPlayed = false; 
+         }
+         else{
+            this.numberAudio = this.audios.length -1;
+            this.isPlayed = false; 
+         }
+      
+         this.setSource();
+    }
+    setSource(){
+ 
+    document.getElementById("radio-title").innerHTML = this.names[this.numberAudio];
+    document.getElementById("audio_file").src = this.audios[this.numberAudio];
+    document.getElementById("img1").src=this.images[this.numberAudio];
+    document.getElementById("ahref").href=this.links1[this.numberAudio];
+
+    this.play_pause();
+    }
+
+}
+onload = new Player();
+    </script>
+    <script >
+        class Speed_Volume{
+    constructor(){
+        this.audio_file = document.getElementById("audio_file");
+
+        var speed = document.getElementById("speed");
+        speed.addEventListener("change",()=>{
+         this.audio_file.playbackRate = speed.value / 100;
+        });
+       
+    }
+
+}
+onload =new Speed_Volume();
+    </script>
+    <script >
+        class Volume{
+    constructor(){
+
+        this.audio_file = document.getElementById("audio_file");
+
+        var volume = document.getElementById("volume");
+        this.audio_file.volume= 50/100;
+        
+        volume.addEventListener("change",()=>{
+         this.audio_file.volume = volume.value / 100 ;
+        } );
+    }
+
+}
+onload = new Volume();
+    </script>
+</body>
+</html>
